@@ -1,7 +1,9 @@
 
 ```sql
 ``` ========== Base Search ========== ```
-| index=bin source=street_devices sourcetype=frames earliest=-1d@d latest=now()
+| multisearch
+  [search index=bin source=street_devices sourcetype=frames earliest=-1d@d latest=now()]
+  [search index=bin2 source=highway_devices sourcetype=frames earliest=-1d@d latest=now()]
 | fields source sourcetype
 ``` ========== Cleaning Logic ========== ```
 | eval eval_test=if(type=1, "1", "0")
