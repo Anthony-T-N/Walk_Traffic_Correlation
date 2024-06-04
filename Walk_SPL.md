@@ -10,6 +10,7 @@
 | where suspected_age>21 AND suspected_age<40
 ``` ========== Coordinate Extraction ========== ```
 | iplocation current_phone_ip
+| geostats latfield=lat_cords longfield=long_cords
 | timechart by host span=1h limit=10
 
 ``` ========== Final Table ========== ```
