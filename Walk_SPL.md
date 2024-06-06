@@ -6,7 +6,7 @@
   [search index=bin2 source=highway_devices sourcetype=frames earliest=-1d@d latest=now()]
 | fields source sourcetype
 ``` ========== Comparison ========== ```
-| lookup target_list.csv person_ID OUTPUT
+| lookup target_list.csv person_ID OUTPUT section walking_style
 ``` ========== Cleaning Logic ========== ```
 | eval eval_test=if(type=1, "1", "0")
 | where suspected_age>21 AND suspected_age<40
