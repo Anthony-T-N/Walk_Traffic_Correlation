@@ -4,6 +4,7 @@
 | multisearch
   [search index=bin source=street_devices sourcetype=frames earliest=-1d@d latest=now()]
   [search index=bin2 source=highway_devices sourcetype=frames earliest=-1d@d latest=now()]
+  [search index=bin3 source=forest_devices sourcetype=frames earliest=-1d@d latest=now()]
 | fields source sourcetype
 ``` ========== Comparison ========== ```
 | lookup target_list.csv person_ID OUTPUT section walking_style
