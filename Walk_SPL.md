@@ -10,6 +10,7 @@
 | lookup target_list.csv person_ID OUTPUT section walking_style
 ``` ========== Cleaning Logic ========== ```
 | eval eval_test=if(type=1, "1", "0")
+| eval individual = coalesce(person, character, being)
 | where suspected_age>21 AND suspected_age<40
 ``` ========== Coordinate Extraction ========== ```
 | iplocation current_phone_ip
