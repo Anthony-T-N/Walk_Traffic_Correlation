@@ -12,6 +12,7 @@
 | eval eval_test=if(type=1, "1", "0")
 | eval individual = coalesce(person, character, being)
 | where suspected_age>21 AND suspected_age<40
+| stats max(suspected_age) AS max_age_in_range
 ``` ========== Coordinate Extraction ========== ```
 | iplocation current_phone_ip
 | geostats latfield=lat_cords longfield=long_cords
