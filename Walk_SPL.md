@@ -20,3 +20,12 @@
 ``` ========== Final Table ========== ```
 | table
 ```
+
+```sql
+``` ========== Base Search ========== ```
+index=bin source=street_devices sourcetype=frames earliest=-1mon@mon latest=-5d@d+5m+40s
+``` ========== Cleaning Logic ========== ```
+```  individual_1, individual_2, individual_3 ```
+| rename indvidual* AS person*
+```
+
