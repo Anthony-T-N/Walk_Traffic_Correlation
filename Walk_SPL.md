@@ -30,5 +30,9 @@ NOT [|inputlookup whitelist.csv | fields source sourcetype individual]
 ``` ========== Cleaning Logic ========== ```
 ```  individual_1, individual_2, individual_3 ```
 | rename indvidual* AS person*
+
+| eval fixed_time = relative_time(now(), "-1d@d")
+| eval epoch_time = strptime(fixed_time, "Y-%m-%d %H:%M:%S,%N:")
+| table fixed_time epoch_time
 ```
 
