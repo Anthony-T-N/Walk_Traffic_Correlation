@@ -31,6 +31,7 @@ NOT [| inputlookup whitelist.csv | fields source sourcetype individual]
 
 | eval fixed_time = relative_time(now(), "-1d@d")
 | eval epoch_time = strptime(fixed_time, "Y-%m-%d %H:%M:%S,%N:")
+| eval readable_time = strftime(epoch_time, "%F %H:%M")
 ``` ========== Final Table ========== ```
 | table fixed_time epoch_time
 ```
