@@ -19,6 +19,12 @@
 | timechart count by host span=1h limit=10
 ```
 
+```
+| makeresults count = 100
+| eval raw = 2023-05-02 annotate = true
+
+```
+
 ```sql
 ``` ========== Base Search ========== ```
 index=bin source=street_devices sourcetype=frames earliest=-1mon@mon latest=-5d@d+5m+40s
