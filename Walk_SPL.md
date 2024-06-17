@@ -27,7 +27,7 @@
 
 ```sql
 ``` ========== Base Search ========== ```
-index=bin source=street_devices sourcetype=frames earliest=-1mon@mon latest=-5d@d+5m+40s
+index=bin source=street_devices sourcetype=frames NOT host IN (host_a, host_b, host_c) earliest=-1mon@mon latest=-5d@d+5m+40s
 ``` Whitelist ```
 NOT [| inputlookup whitelist.csv | fields source sourcetype individual]
 [search index=bin2 source=street_devices sourcetype=frames individual!=A* | fields individual]
