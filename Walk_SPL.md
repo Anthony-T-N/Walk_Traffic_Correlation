@@ -30,7 +30,7 @@
 index=bin source=street_devices sourcetype=frames NOT host IN (host_a, host_b, host_c) earliest=-1mon@mon latest=-5d@d+5m+40s
 | rex field=_raw "$.*\d{4}-\d{2}-\d{2}\s<?extracted_field>"
 ``` Whitelist ```
-NOT [| inputlookup whitelist.csv | fields source sourcetype individual]
+NOT [| inputlookup whitelist.csv | fields source sourcetype person | rename person AS individual]
 [search index=bin2 source=street_devices sourcetype=frames individual!=A* | fields individual]
 ``` ========== Cleaning Logic ========== ```
 ```  individual_1, individual_2, individual_3 ```
