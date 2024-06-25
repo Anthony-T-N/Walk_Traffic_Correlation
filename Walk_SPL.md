@@ -30,7 +30,6 @@
 index=bin source=street_devices sourcetype=frames NOT host IN (host_a, host_b, host_c) earliest=-1mon@mon latest=-5d@d+5m+40s
 | eval _raw = replace(_raw, "username=".*"", "Hidden")
 | eval _raw = replace(_raw, "coords=".*"", "ZZZ")
-| where match(delta, "qqq")
 | rex field=_raw "$.*\d{4}-\d{2}-\d{2}\s<?extracted_field>"
 ``` Whitelist ```
 NOT [| inputlookup whitelist.csv | fields source sourcetype person | rename person AS individual]
@@ -38,11 +37,10 @@ NOT [| inputlookup whitelist.csv | fields source sourcetype person | rename pers
 ``` ========== Cleaning Logic ========== ```
 ```  individual_1, individual_2, individual_3 ```
 | rename indvidual* AS person*
-
 | eval fixed_time = relative_time(now(), "-1d@d")
 | eval epoch_time = strptime(fixed_time, "Y-%m-%d %H:%M:%S,%N:")
 | eval readable_time = strftime(epoch_time, "%F %H:%M")
 ``` ========== Final Table ========== ```
-| return [15] readable_time
+| table _time host _raw
 ```
 
