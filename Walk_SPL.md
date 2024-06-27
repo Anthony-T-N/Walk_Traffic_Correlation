@@ -28,6 +28,7 @@
 ```sql
 ``` ========== Base Search ========== ```
 index=bin source=street_devices sourcetype=frames NOT host IN (host_a, host_b, host_c) earliest=-1mon@mon latest=-5d@d+5m+40s
+| fields _raw _time host source
 | eval _raw = replace(_raw, "username=".*"", "Hidden")
 | eval _raw = replace(_raw, "coords=".*"", "ZZZ")
 | rex field=_raw "$.*\d{4}-\d{2}-\d{2}\s<?extracted_field>"
