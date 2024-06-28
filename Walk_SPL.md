@@ -42,6 +42,6 @@ NOT [| inputlookup updated_whitelist.csv | fields source sourcetype person | ren
 | eval epoch_time = strptime(fixed_time, "Y-%m-%d %H:%M:%S,%N:")
 | eval readable_time = strftime(epoch_time, "%F %H:%M")
 ``` ========== Final Table ========== ```
-| table _time host _raw
-``
+| table _time _raw host
+``'
 
